@@ -1,0 +1,24 @@
+PROYECTO COMPLETO REVITAM — CONTENEDORES / PWA / ALERTAS
+
+Incluye el código actual, archivos PWA, iconos, funciones de Firebase, reglas recuperadas, documentación, la versión anterior del HTML y una copia JSON de los datos incrustados en ese HTML.
+
+IMPORTANTE SOBRE LOS DATOS
+El JSON de datos es una copia de los registros incluidos en el archivo que compartiste. No se descargó la base de datos actual de Firebase. Los registros añadidos o modificados después pueden no estar aquí.
+
+Para completar tu respaldo actual:
+1. Abre tu sistema conectado a Firebase y entra con tu cuenta.
+2. Ve a Respaldo → Descargar respaldo JSON.
+3. Conserva ese JSON junto a este ZIP; si lo adjuntas puedo integrarlo al paquete.
+No importes la copia histórica sobre tu base actual sin revisar: importar sustituye los datos compartidos.
+
+ORGANIZACIÓN
+Los archivos del sistema están en la raíz del ZIP.
+functions/: código de notificaciones y control por IP.
+datos/: copia histórica extraída del HTML recibido.
+version_anterior/: HTML original previo a estas mejoras.
+LEEME.md: instrucciones de instalación y activación.
+firestore_contenedores.rules: reglas recuperadas del archivo existente; no se comprobaron contra las reglas publicadas en tu consola.
+SHA256SUMS.txt: verificación de integridad de los archivos.
+
+ACTIVACIÓN PENDIENTE
+El código de notificaciones con la app cerrada y del límite real por IP está preparado, pero sus funciones todavía no están desplegadas. No contiene claves privadas VAPID ni secretos del servidor: deben crearse siguiendo LEEME.md. La conexión pública de Firebase existente sí se conserva dentro del HTML.

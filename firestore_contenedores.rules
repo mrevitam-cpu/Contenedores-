@@ -1,0 +1,27 @@
+// Revitam: contenedores. UID de administrador compartido previamente.
+// Integra este bloque en las reglas existentes si el proyecto tiene otros módulos.
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function administrador() {
+      return request.auth != null
+        && request.auth.uid == 'WS5Rq0P9DgXUa7LWfrpe9s19rPA2';
+    }
+    match /revitamContenedores/estado {
+      allow get: if administrador();
+      allow list, delete: if false;
+      allow create: if administrador()
+        && request.resource.data.keys().hasOnly(['schema', 'payload', 'revision', 'updatedAt'])
+        && request.resource.data.schema == 2
+        && request.resource.data.payload is string
+        && request.resource.data.revision == 1
+        && request.resource.data.updatedAt == request.time;
+      allow update: if administrador()
+        && request.resource.data.keys().hasOnly(['schema', 'payload', 'revision', 'updatedAt'])
+        && request.resource.data.schema == 2
+        && request.resource.data.payload is string
+        && request.resource.data.revision == resource.data.revision + 1
+        && request.resource.data.updatedAt == request.time;
+    }
+  }
+}
